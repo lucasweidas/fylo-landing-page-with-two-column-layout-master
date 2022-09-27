@@ -1,0 +1,20 @@
+@use '../abstracts' as *;
+
+.header {
+  &__container {
+    --container-max-width: #{rem(1300)};
+    padding-block-start: var(--container-padding-inline);
+
+    @include breakpoint(large) {
+      padding-block-start: rem(64);
+    }
+  }
+
+  &__nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--item-gap-200);
+  }
+}

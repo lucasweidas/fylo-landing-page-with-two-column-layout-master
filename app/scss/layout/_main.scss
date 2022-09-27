@@ -1,0 +1,13 @@
+@use '../abstracts' as *;
+
+.main {
+  &__container {
+    margin-block-start: rem(90);
+
+    @include breakpoint(medium) {
+      @include breakpoint-down(medium) {
+        margin-block-start: rem(192);
+      }
+    }
+  }
+}

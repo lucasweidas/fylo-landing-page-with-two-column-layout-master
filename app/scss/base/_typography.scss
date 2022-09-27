@@ -1,0 +1,85 @@
+@use '../abstracts' as *;
+
+:root {
+  --font-raleway: 'Raleway', sans-serif;
+  --font-open-sans: 'Open Sans', sans-serif;
+  --font-size-50: #{rem(10)};
+  --font-size-100: #{rem(12)};
+  --font-size-150: #{rem(14)};
+  --font-size-200: #{rem(15)};
+  --font-size-heading-1: #{rem(26)};
+  --font-size-heading-2: #{rem(18)};
+  --font-size-heading-2-white: var(--font-size-heading-2);
+
+  @include breakpoint(medium) {
+    @include breakpoint-down(large) {
+      --font-size-50: #{rem(13)};
+      --font-size-100: #{rem(18)};
+      --font-size-150: #{rem(20)};
+      --font-size-200: #{rem(22)};
+      --font-size-heading-1: #{rem(46)};
+      --font-size-heading-2: #{rem(32)};
+    }
+  }
+
+  @include breakpoint(large) {
+    --font-size-200: #{rem(16)};
+    --font-size-heading-1: #{rem(40)};
+    --font-size-heading-2: #{rem(40)};
+    --font-size-heading-2-white: #{rem(32)};
+  }
+}
+
+body {
+  font-family: var(--font-open-sans);
+  font-size: var(--font-size-200);
+}
+
+.text {
+  font-weight: 400;
+  color: var(--color-dark-blue);
+  line-height: 1.6;
+
+  &--desaturated {
+    @extend .text;
+    color: var(--color-desaturated-blue);
+  }
+
+  &--white {
+    @extend .text;
+    color: var(--color-white);
+  }
+
+  &--sm {
+    @extend .text;
+    font-size: var(--font-size-150);
+  }
+}
+
+.heading {
+  font-family: var(--font-raleway);
+  font-weight: 700;
+  color: var(--color-dark-blue);
+  line-height: 1.4;
+
+  &--1 {
+    @extend .heading;
+    font-size: var(--font-size-heading-1);
+  }
+
+  &--2 {
+    @extend .heading;
+    font-size: var(--font-size-heading-2);
+    text-align: center;
+
+    @include breakpoint(large) {
+      text-align: start;
+    }
+
+    &--white {
+      @extend .heading--2;
+      font-size: var(--font-size-heading-2-white);
+      color: var(--color-white);
+    }
+  }
+}

@@ -1,0 +1,36 @@
+@use '../abstracts' as *;
+
+.contact {
+  height: min-content;
+  display: grid;
+  row-gap: var(--item-gap-150);
+
+  &__wrapper {
+    height: min-content;
+    display: flex;
+    align-items: center;
+    column-gap: var(--item-gap-150);
+  }
+
+  .icon-phone {
+    --icon-width: #{rem(18)};
+    width: var(--icon-width);
+
+    @include breakpoint(medium) {
+      @include breakpoint-down(large) {
+        --icon-width: #{rem(28)};
+      }
+    }
+  }
+
+  .icon-email {
+    --icon-width: #{rem(20)};
+    width: var(--icon-width);
+
+    @include breakpoint(medium) {
+      @include breakpoint-down(large) {
+        --icon-width: #{rem(30)};
+      }
+    }
+  }
+}

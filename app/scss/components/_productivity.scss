@@ -1,0 +1,175 @@
+@use '../abstracts' as *;
+
+.productivity {
+  --background-height: #{rem(53)};
+  --background-url: url('../images/bg-curve-mobile.svg');
+
+  padding-block: rem(40) rem(72);
+  margin-block-start: rem(90);
+  background: var(--background-url) top center / 100% var(--background-height) border-box no-repeat, var(--color-light-blue) padding-box;
+  border-top: var(--background-height) solid transparent;
+
+  @include breakpoint(medium) {
+    --background-height: #{rem(114)};
+    --background-url: url('../images/bg-curve-desktop.svg');
+    padding-block: rem(120) rem(160);
+    margin-block-start: rem(176);
+  }
+
+  @include breakpoint(large) {
+    padding-block: rem(104);
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: rem(64);
+
+    @include breakpoint(large) {
+      flex-direction: row-reverse;
+      justify-content: space-between;
+      column-gap: rem(32);
+    }
+  }
+
+  &__image {
+    @include breakpoint(large) {
+      --hero-image-width: #{rem(540)};
+    }
+  }
+
+  &__content {
+    display: grid;
+
+    @include breakpoint(medium) {
+      width: min(100%, rem(656));
+    }
+
+    .heading--2 {
+      margin-block-end: var(--item-gap-250);
+    }
+
+    .text--desaturated {
+      @include breakpoint(large) {
+        width: min(100%, rem(520));
+      }
+
+      &:first-of-type {
+        margin-block-end: var(--item-gap-200);
+      }
+    }
+  }
+
+  &__link {
+    width: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    justify-self: center;
+    column-gap: em(8);
+    padding-block-end: em(8);
+    margin-block: rem(32);
+    color: var(--color-moderate-cyan);
+    border-bottom: rem(1) solid var(--color-moderate-cyan);
+
+    @include on-hover-focus-visible(filter) {
+      filter: brightness(140%);
+    }
+
+    @include breakpoint(medium) {
+      margin-block: rem(48) rem(64);
+    }
+
+    @include breakpoint(large) {
+      margin-block: rem(16) rem(48);
+      justify-self: flex-start;
+    }
+
+    .icon-arrow {
+      position: relative;
+      bottom: em(-1);
+      width: 1.2em;
+
+      img {
+        width: 100%;
+      }
+    }
+  }
+
+  &__testimonial {
+    display: grid;
+    justify-self: center;
+    row-gap: var(--item-gap-150);
+    padding: rem(20);
+    background-color: var(--color-white);
+    border-radius: rem(5);
+    box-shadow: 0 0 rem(20) rem(-2) hsl(0, 0%, 0%, 0.1);
+
+    @include breakpoint(medium) {
+      --testimonial-max-width: #{rem(560)};
+      width: min(100%, var(--testimonial-max-width));
+      padding: rem(32) rem(40);
+    }
+
+    @include breakpoint(large) {
+      --testimonial-max-width: #{rem(360)};
+      justify-self: flex-start;
+      padding: rem(26) rem(32);
+    }
+
+    .icon-quotes {
+      width: rem(13);
+
+      @include breakpoint(medium) {
+        @include breakpoint-down(large) {
+          width: rem(20);
+        }
+      }
+    }
+
+    .user {
+      display: grid;
+      grid-template-areas: 'avatar name' 'avatar title';
+      grid-auto-columns: min-content max-content;
+      align-items: center;
+      gap: rem(2) rem(10);
+      color: var(--color-dark-blue);
+
+      @include breakpoint(medium) {
+        @include breakpoint-down(large) {
+          column-gap: rem(16);
+        }
+      }
+
+      &__avatar {
+        --avatar-size: #{rem(32)};
+        width: var(--avatar-size);
+        height: var(--avatar-size);
+        grid-area: avatar;
+
+        @include breakpoint(medium) {
+          @include breakpoint-down(large) {
+            --avatar-size: #{rem(48)};
+          }
+        }
+
+        img {
+          border-radius: 50%;
+        }
+      }
+
+      &__name {
+        grid-area: name;
+        font-family: var(--font-raleway);
+        font-size: var(--font-size-100);
+        font-weight: 700;
+      }
+
+      &__title {
+        grid-area: title;
+        font-size: var(--font-size-50);
+      }
+    }
+  }
+}

@@ -1,0 +1,42 @@
+@use '../abstracts' as *;
+
+.intro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: rem(40);
+
+  @include breakpoint(medium) {
+    row-gap: rem(64);
+  }
+
+  @include breakpoint(large) {
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    column-gap: rem(32);
+  }
+
+  &__content {
+    display: grid;
+    justify-items: center;
+    text-align: center;
+
+    @include breakpoint(large) {
+      width: min(100%, rem(592));
+      text-align: start;
+      justify-items: flex-start;
+    }
+  }
+
+  .heading--1 {
+    margin-block-end: var(--item-gap-200);
+  }
+
+  .text {
+    margin-block-end: var(--item-gap-250);
+
+    @include breakpoint(medium) {
+      width: min(100%, rem(528));
+    }
+  }
+}

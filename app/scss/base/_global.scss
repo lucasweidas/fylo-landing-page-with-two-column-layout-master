@@ -1,0 +1,39 @@
+@use '../abstracts' as *;
+
+:root {
+  --container-max-width: #{rem(450)};
+  --container-padding-inline: #{rem(24)};
+  --item-gap-150: #{rem(16)};
+  --item-gap-200: #{rem(20)};
+  --item-gap-250: #{rem(24)};
+  --duration-1: 150ms;
+
+  @include breakpoint(medium) {
+    --container-max-width: #{rem(1300)};
+    --container-padding-inline: #{rem(48)};
+    --item-gap-150: #{rem(20)};
+    --item-gap-200: #{rem(40)};
+    --item-gap-250: #{rem(44)};
+  }
+
+  @include breakpoint(large) {
+    --container-padding-inline: #{rem(24)};
+    --item-gap-150: #{rem(16)};
+    --item-gap-200: #{rem(20)};
+    --item-gap-250: #{rem(24)};
+  }
+}
+
+.hero-container {
+  width: min(100% - var(--container-padding-inline) * 2, var(--container-max-width));
+  margin-inline: auto;
+}
+
+.hero-image {
+  --hero-image-width: #{rem(400)};
+  width: min(100%, var(--hero-image-width));
+
+  @include breakpoint(medium) {
+    --hero-image-width: #{rem(640)};
+  }
+}

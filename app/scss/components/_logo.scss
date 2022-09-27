@@ -1,0 +1,23 @@
+@use '../abstracts' as *;
+
+.logo {
+  --logo-whidth: #{rem(80)};
+  width: min(100%, var(--logo-whidth));
+
+  @include breakpoint(medium) {
+    --logo-whidth: #{rem(160)};
+  }
+
+  &--footer {
+    @extend .logo;
+    --logo-whidth: #{rem(120)};
+
+    @include breakpoint(medium) {
+      --logo-whidth: #{rem(336)};
+    }
+
+    @include breakpoint(large) {
+      --logo-whidth: #{rem(176)};
+    }
+  }
+}

@@ -1,0 +1,121 @@
+@use '../abstracts' as *;
+
+.form {
+  --form-max-width: #{rem(540)};
+  --form-gap: #{rem(16)};
+  --input-height: #{rem(46)};
+  --input-padding-inline: #{rem(20)};
+  --input-border-radius: #{rem(4)};
+
+  width: min(100%, var(--form-max-width));
+  display: flex;
+  flex-direction: column;
+  row-gap: var(--form-gap);
+  font-family: var(--font-raleway);
+  font-size: var(--font-size-150);
+
+  @include breakpoint(medium) {
+    --form-max-width: #{rem(608)};
+
+    @include breakpoint-down(large) {
+      --form-gap: #{rem(32)};
+      --input-height: #{rem(80)};
+      --input-padding-inline: #{rem(32)};
+      --input-border-radius: #{rem(6)};
+    }
+  }
+
+  @include breakpoint(large) {
+    flex-direction: row;
+    column-gap: var(--form-gap);
+  }
+
+  &--get-started {
+    --form-gap: #{rem(16)};
+    --form-max-width: #{rem(480)};
+    --input-height: #{rem(48)};
+    --input-padding-inline: #{rem(16)};
+
+    @include breakpoint(medium) {
+      @include breakpoint-down(large) {
+        --input-height: #{rem(64)};
+        --input-padding-inline: #{rem(20)};
+      }
+    }
+
+    @include breakpoint(large) {
+      flex-direction: column;
+    }
+  }
+
+  &__wrapper {
+    display: grid;
+    row-gap: rem(8);
+    width: 100%;
+
+    &--intro {
+      @extend .form__wrapper;
+      --text-error-color: var(--color-red);
+
+      @include breakpoint(large) {
+        width: min(100%, rem(320));
+      }
+    }
+
+    &--get-started {
+      @extend .form__wrapper;
+      --text-error-color: var(--color-white);
+
+      @include breakpoint(large) {
+        width: min(100%, rem(480));
+      }
+    }
+
+    .text-error {
+      display: none;
+      color: var(--text-error-color);
+    }
+
+    .form__email.invalid + .text-error {
+      display: block;
+    }
+  }
+
+  &__email {
+    width: 100%;
+    height: var(--input-height);
+    padding-inline: var(--input-padding-inline);
+    color: var(--color-dark-blue);
+    border: rem(1) solid var(--color-desaturated-blue);
+    border-radius: var(--input-border-radius);
+
+    &::placeholder {
+      color: var(--color-light-gray);
+    }
+
+    &:where(:focus-visible, :focus) {
+      outline: none;
+      border-color: var(--color-bright-blue);
+    }
+
+    &.invalid {
+      border-color: var(--color-red);
+    }
+  }
+
+  &__submit {
+    height: var(--input-height);
+    border-radius: var(--input-border-radius);
+    background-color: var(--color-bright-blue);
+    font-weight: 700;
+    color: var(--color-light-blue);
+
+    @include breakpoint(large) {
+      width: min(100%, rem(200));
+    }
+
+    @include on-hover-focus-visible(filter) {
+      filter: brightness(150%);
+    }
+  }
+}
